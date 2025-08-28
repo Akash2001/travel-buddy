@@ -3,8 +3,6 @@ const axios = require("axios");
 const router = express.Router();
 
 router.get("/search", async (req, res) => {
-  const { query, near } = req.query;
-
   try {
     const response = await axios.get(`${process.env.FSQ_URL}/places/search`, {
       headers: {
@@ -13,7 +11,7 @@ router.get("/search", async (req, res) => {
         Accept: "application/json",
       },
       params: {
-        query,
+        ...req.query,
         limit: 5,
       },
     });

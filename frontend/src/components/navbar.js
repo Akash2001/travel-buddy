@@ -9,13 +9,10 @@ export default function Navbar() {
         </Link>
         <ul className="flex space-x-6">
           <li>
-            <Link to="/" className="hover:text-gray-200">Home</Link>
+            <Link to="/my-plan" className="hover:text-gray-200">My Plan</Link>
           </li>
           <li>
-            <Link to="/about" className="hover:text-gray-200">About</Link>
-          </li>
-          <li>
-            <Link to="/contact" className="hover:text-gray-200">Contact</Link>
+            <Link to="/profile" className="hover:text-gray-200">Profile</Link>
           </li>
         </ul>
       </div>
