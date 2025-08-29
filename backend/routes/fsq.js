@@ -11,8 +11,7 @@ router.get("/search", async (req, res) => {
         Accept: "application/json",
       },
       params: {
-        ...req.query,
-        limit: 5,
+        ...req.query
       },
     });
     res.json(response.data.results);

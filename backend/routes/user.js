@@ -7,16 +7,21 @@ const usersSchema = require('../schemas/userSchema');
 const User = mongoose.model('users', usersSchema);
 
 router.post('/login', async (req, res) => {
-    let success = false;
-    const user = await User.find({ email: req.body.email });
-    if (user[0] && user[0].password === req.body.password) success = true;
-    res.json({ success: success, user: user[0] });
+  let success = false;
+  const user = await User.find({ email: req.body.email });
+  if (user[0] && user[0].password === req.body.password) {
+    success = true;
+    res.json({ success, user: user[0] });
+  }
+  else res.json({ success, message: "Invalid credentials" });
 });
 
 router.post('/signup', async (req, res) => {
-    const newUser = new User(req.body);
-    await newUser.save();
-    res.json(newUser);
+  const user = await User.find({ email: req.body.email });
+  if (user[0]) return res.json({ success: false, message: "User already exists" });
+  const newUser = new User(req.body);
+  await newUser.save();
+  res.json({ success: true, newUser });
 });
 
 router.put('/:id', async (req, res) => {

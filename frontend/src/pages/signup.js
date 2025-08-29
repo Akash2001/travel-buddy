@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { signup } from "../api/user";
 import { useNavigate } from "react-router-dom";
+import CategoryMultiSelect from "../components/common/categoriesMultiSelect";
 
 
 export default function Signup({ setUser }) {
-    const [form, setForm] = useState({ name: "", email: "", password: "" });
+    const [form, setForm] = useState({ name: "", email: "", password: "", categories: [] });
     const navigate = useNavigate();
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
+
+    const handleChangeCategories = (ids) => {
+        setForm({ ...form, categories: ids });
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,6 +39,7 @@ export default function Signup({ setUser }) {
                         onChange={handleChange}
                         className="w-full p-2 border rounded-lg"
                     />
+                    <CategoryMultiSelect onChange={(ids) => handleChangeCategories(ids)} />
                     <input
                         type="email"
                         name="email"
