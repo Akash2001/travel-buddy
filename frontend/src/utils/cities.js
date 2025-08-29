@@ -1,0 +1,22 @@
+export const cities = [
+  { "city": "Agra", "lat": 27.1767, "lng": 78.0081 },
+  { "city": "Jaipur", "lat": 26.9124, "lng": 75.7873 },
+  { "city": "New Delhi", "lat": 28.6139, "lng": 77.2090 },
+  { "city": "Mumbai", "lat": 19.0760, "lng": 72.8777 },
+  { "city": "Goa", "lat": 15.2993, "lng": 74.1240 },
+  { "city": "Varanasi", "lat": 25.3176, "lng": 82.9739 },
+  { "city": "Amritsar", "lat": 31.6340, "lng": 74.8723 },
+  { "city": "Hyderabad", "lat": 17.3850, "lng": 78.4867 },
+  { "city": "Chennai", "lat": 13.0827, "lng": 80.2707 },
+  { "city": "Mysuru", "lat": 12.2958, "lng": 76.6394 },
+  { "city": "Bengaluru", "lat": 12.9716, "lng": 77.5946 },
+  { "city": "Udaipur", "lat": 24.5854, "lng": 73.7125 },
+  { "city": "Kolkata", "lat": 22.5726, "lng": 88.3639 },
+  { "city": "Leh", "lat": 34.1526, "lng": 77.5771 },
+  { "city": "Darjeeling", "lat": 27.0410, "lng": 88.2663 },
+  { "city": "Rishikesh", "lat": 30.0869, "lng": 78.2676 },
+  { "city": "Jodhpur", "lat": 26.2389, "lng": 73.0243 },
+  { "city": "Khajuraho", "lat": 24.8318, "lng": 79.9199 },
+  { "city": "Aurangabad", "lat": 19.8762, "lng": 75.3433 },
+  { "city": "Puri", "lat": 19.8135, "lng": 85.8312 }
+]
