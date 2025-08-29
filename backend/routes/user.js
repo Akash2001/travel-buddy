@@ -21,7 +21,7 @@ router.post('/signup', async (req, res) => {
   if (user[0]) return res.json({ success: false, message: "User already exists" });
   const newUser = new User(req.body);
   await newUser.save();
-  res.json({ success: true, newUser });
+  res.json({ success: true, user: newUser });
 });
 
 router.put('/:id', async (req, res) => {

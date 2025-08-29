@@ -21,7 +21,7 @@ function App() {
   return (
     <Router>
       <div className="flex flex-col h-screen">
-        <Navbar />
+        <Navbar user={user} />
         <Routes>
           {user ? (<>
             <Route path="/" element={<Home location={location} />} />

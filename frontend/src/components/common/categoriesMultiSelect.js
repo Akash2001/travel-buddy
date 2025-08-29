@@ -31,7 +31,7 @@ export default function CategoryDropdown({ onChange }) {
         <span>
           {selected.length > 0
             ? `${selected.length} selected`
-            : "Select categories"}
+            : "Select interests"}
         </span>
         <svg
           className={`w-4 h-4 transform transition-transform ${
