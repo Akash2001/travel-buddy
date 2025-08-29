@@ -18,7 +18,7 @@ export default function Login({ setUser }) {
         if (res.data && res.data.success) {
             localStorage.setItem("user", JSON.stringify(res.data.user));
             setUser(res.data.user);
-        }
+        }else alert(res.data.message || "Login failed");
         setLoading(false)
     };
 

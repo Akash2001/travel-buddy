@@ -4,42 +4,23 @@ import { searchPlaces } from "../api/fsq";
 import { PlacesList } from "../components/places/placesList";
 import { FiltersPanel } from "../components/places/filtersPanel";
 
-export default function Home() {
+export default function Home({ location }) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [places, setPlaces] = useState([]);
-  const [filters, setFilters] = useState({ sort: "relevance", radius: 10000 });
+  const [filters, setFilters] = useState({ sort: "relevance", limit: 5, radius: 10000, ll: location ? `${location.lat},${location.lng}` : undefined });
   const [loading, setLoading] = useState(false);
-
-  // Example static page list
-  const pages = [
-    { name: "Home", path: "/" },
-    { name: "About Us", path: "/about" },
-    { name: "Contact", path: "/contact" },
-    { name: "Services", path: "/services" },
-    { name: "Destinations", path: "/destinations" },
-  ];
 
   const handleSearchInput = (e) => {
     const value = e.target.value;
     setQuery(value);
-
-    if (value.trim() === "") {
-      setResults([]);
-      return;
-    }
-
-    const filtered = pages.filter((page) =>
-      page.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setResults(filtered);
   };
 
   const handleSearch = async (e) => {
     if (e.key !== "Enter") return
     setLoading(true);
-    const res = await searchPlaces({query, ...filters});
+    const res = await searchPlaces({ query, ...filters });
     if (res.status === 200) setPlaces(res.data);
     setLoading(false);
   }
@@ -47,7 +28,6 @@ export default function Home() {
   const handleSelect = (path) => {
     navigate(path);
     setQuery("");
-    setResults([]);
   };
 
   return (
@@ -63,19 +43,6 @@ export default function Home() {
             placeholder="Search pages..."
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:border-blue-300"
           />
-          {results.length > 0 && (
-            <ul className="absolute left-0 right-0 bg-white border border-gray-300 rounded-lg mt-1 shadow-lg z-10">
-              {results.map((page, index) => (
-                <li
-                  key={index}
-                  onClick={() => handleSelect(page.path)}
-                  className="p-2 cursor-pointer hover:bg-gray-100"
-                >
-                  {page.name}
-                </li>
-              ))}
-            </ul>
-          )}
         </div>
         <FiltersPanel onApply={setFilters} />
       </div>
